@@ -1,0 +1,47 @@
+﻿<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="무작위 단어를 뽑아 새로운 아이디어의 출발점을 만듭니다.">
+    <title>무작위 아이디어 단어</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <main class="idea-picker" aria-labelledby="page-title">
+      <h1 id="page-title" class="visually-hidden">무작위 아이디어 단어</h1>
+
+      <output id="result" class="result" aria-live="polite">
+        단어를 기다리는 중
+      </output>
+
+      <div class="controls">
+        <label for="word-count">단어 수</label>
+        <input
+          id="word-count"
+          type="number"
+          value="3"
+          min="1"
+          max="100"
+          step="1"
+          inputmode="numeric"
+          disabled
+        >
+        <button id="draw-button" type="button" disabled>추첨</button>
+      </div>
+
+      <p id="message" class="message" role="status">
+        단어 목록을 불러오는 중…
+      </p>
+    </main>
+
+    <footer class="attribution">
+      단어 목록 출처: <a href="https://wortschatz.uni-leipzig.de/">Wortschatz Leipzig</a>
+      · 라이선스: <a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC</a>
+    </footer>
+  </body>
+</html>
+
+
+
