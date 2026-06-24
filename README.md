@@ -63,6 +63,8 @@ python scripts/build_words.py
 
 ## 데이터 출처와 라이선스
 
-단어 목록의 출처는 [Wortschatz Leipzig](https://wortschatz.uni-leipzig.de/)이며, 단어 데이터는 [CC BY-NC](https://creativecommons.org/licenses/by-nc/4.0/) 조건으로 표시합니다.
+단어 목록은 Wortschatz Leipzig에서 다운로드한 한국어 뉴스 텍스트 코퍼스에서 추출했습니다. 공식 이용 조건에 따라 다운로드 코퍼스에는 [CC BY](https://wortschatz-leipzig.de/en/usage)가 적용됩니다.
 
 이 고지는 단어 데이터에 관한 것이며 프로젝트 코드의 라이선스와는 별개입니다.
+
+
