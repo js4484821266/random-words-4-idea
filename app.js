@@ -40,7 +40,7 @@ function drawWords() {
     return;
   }
 
-  result.textContent = pickUniqueWords(count).join("\n");
+  result.textContent = pickUniqueWords(count).join(" ");
   showMessage("");
 }
 
@@ -77,3 +77,4 @@ countInput.addEventListener("keydown", (event) => {
 });
 
 loadWords();
+
