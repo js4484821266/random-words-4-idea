@@ -6,7 +6,7 @@
 
 ## 주요 기능
 
-- 한글이 포함된 단어 311,783개 중 균등 확률로 추첨
+- Okt가 명사·동사·형용사로 판정한 실질 형태소 47,203개 중 균등 확률로 추첨
 - 한 번의 추첨 안에서는 같은 단어가 나오지 않음
 - 1개부터 100개까지 추첨 가능
 - 데이터 로딩 상태와 오류 메시지 표시
@@ -39,13 +39,16 @@ python -m http.server 8000
 
 ## 단어 데이터 재생성
 
-원본 TSV가 `kor_news_2022_100K/kor_news_2022_100K-words.txt`에 있을 때 다음 명령으로 웹용 JSON을 다시 생성할 수 있습니다.
+재생성에는 Python 3, Java 8 이상, KoNLPy의 Okt 분석기가 필요합니다. 기존 환경에 의존성을 설치한 뒤 생성 스크립트를 실행합니다.
 
 ```powershell
+python -m pip install -r requirements.txt
 python scripts/build_words.py
 ```
 
-스크립트는 원본의 두 번째 열에서 한글 음절이 하나 이상 포함된 항목만 골라 `data/words.json`에 저장합니다. 원본 파일은 수정하지 않습니다.
+스크립트는 `kor_news_2022_100K-sentences.txt`의 문장 문맥을 Okt로 분석합니다. `norm=True`, `stem=True`를 적용해 명사(`Noun`), 동사(`Verb`), 형용사(`Adjective`)만 기본형으로 추출하고, 한글 포함 여부를 확인한 뒤 첫 등장 순서로 중복을 제거해 `data/words.json`에 저장합니다. 원본 파일은 수정하지 않습니다.
+
+웹페이지 실행 자체에는 Python, Java, KoNLPy가 필요하지 않습니다. 이들은 JSON을 다시 만들 때만 사용합니다.
 
 ## 프로젝트 구조
 
@@ -55,7 +58,8 @@ python scripts/build_words.py
 ├── styles.css              # 흑백 레이아웃과 반응형 스타일
 ├── app.js                  # 데이터 로딩, 입력 검증, 무작위 추첨
 ├── data/words.json         # 웹페이지에서 사용하는 단어 목록
-├── scripts/build_words.py  # 원본 TSV를 JSON으로 변환
+├── scripts/build_words.py  # Okt로 실질 형태소 JSON 생성
+├── requirements.txt        # 데이터 재생성용 Python 의존성
 └── ABSORB/                 # 코드 이해를 위한 학습 교재와 해설
 ```
 
@@ -66,5 +70,6 @@ python scripts/build_words.py
 단어 목록은 Wortschatz Leipzig에서 다운로드한 한국어 뉴스 텍스트 코퍼스에서 추출했습니다. 공식 이용 조건에 따라 다운로드 코퍼스에는 [CC BY](https://wortschatz-leipzig.de/en/usage)가 적용됩니다.
 
 이 고지는 단어 데이터에 관한 것이며 프로젝트 코드의 라이선스와는 별개입니다.
+
 
 
